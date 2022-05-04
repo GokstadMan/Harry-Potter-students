@@ -3,9 +3,8 @@ let slytherinArray = [];
 let gryffindorArray = [];
 let ravenclawArray = [];
 let hufflepuffArray = [];
-let studentContainer = document.getElementById("student-container");
-const searchBar = document.getElementById("search-bar");
 
+let studentContainer = document.getElementById("student-container");
 
 async function fetchStudents() {
   let response = await fetch(
@@ -32,18 +31,22 @@ async function fetchStudents() {
   });
 }
 
-/*searchBar.addEventListener("keyup", (e) => {
-    const searchString = e.target.value.toLowerCase();
+//SearchBar
 
-    const filterStudents = studentArray.filter((student) => {
-        return student.name.toLowerCase().includes(searchString);
+const searchBar = document.getElementById("search-bar");
+let studentsList = document.getElementsByClassName(".students-list");
+
+searchBar.addEventListener("keyup",(e) => {
+  let searchString = e.target.value.toLowerCase();
+  if (e.target.value === "") {
+    studentsList.innerHTML = "";
+  } else {
+    let filteredStudents = studentArray.filter((student) => {
+      return student.name.toLowerCase().includes(searchString);
     });
-    if (filterStudents == "") {
-        alert("Please type a Harry Potter character");
-    }
-
-    displayCharacters(filterStudents);
-}); */
+    showStudents(filteredStudents);
+  }
+});
 
 let houseOfSlytherin = document.getElementById("house-of-slytherin");
 houseOfSlytherin.addEventListener("click", function () {

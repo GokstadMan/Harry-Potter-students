@@ -42,6 +42,14 @@ button {
   margin: 10px;
 }
 
+.students-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 2em;
+}
+
 #add-student-btn {
   background-color: rgb(107, 230, 134);
 }
