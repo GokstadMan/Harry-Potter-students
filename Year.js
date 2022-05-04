@@ -36,17 +36,18 @@ async function fetchStudents() {
 const searchBar = document.getElementById("search-bar");
 let studentsList = document.getElementsByClassName(".students-list");
 
-searchBar.addEventListener("keyup",(e) => {
+searchBar.addEventListener("keyup", function (e) {
   let searchString = e.target.value.toLowerCase();
-  if (e.target.value === "") {
+  let filteredCharacters = studentArray.filter(function (student) {
+    return (
+      student.name.toLowerCase().includes(searchString)
+    );
+  });
+  showStudents(filteredCharacters);
+  if (searchBar.value === "") {
     studentsList.innerHTML = "";
-  } else {
-    let filteredStudents = studentArray.filter((student) => {
-      return student.name.toLowerCase().includes(searchString);
-    });
-    showStudents(filteredStudents);
   }
-});
+});	
 
 let houseOfSlytherin = document.getElementById("house-of-slytherin");
 houseOfSlytherin.addEventListener("click", function () {
