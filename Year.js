@@ -1,4 +1,4 @@
-let studentArray = []; 
+let studentArray = [];
 let slytherinArray = [];
 let gryffindorArray = [];
 let ravenclawArray = [];
@@ -8,11 +8,11 @@ let studentContainer = document.getElementById("student-container");
 
 async function fetchStudents() {
   let response = await fetch(
-    "http://hp-api.herokuapp.com/api/characters/students"
+    "http://hp-api.herokuapp.com/api/characters/students/"
   ); // or API as defined
   let data = await response.json();
   studentArray.push(data);
-  
+
   // filtrate students in own arrays
 
   data.filter((student) => {
@@ -34,20 +34,20 @@ async function fetchStudents() {
 //SearchBar
 
 const searchBar = document.getElementById("search-bar");
-let studentsList = document.getElementsByClassName(".students-list");
+let studentsList = document.getElementById("students-list");
 
 searchBar.addEventListener("keyup", function (e) {
   let searchString = e.target.value.toLowerCase();
-  let filteredCharacters = studentArray.filter(function (student) {
-    return (
-      student.name.toLowerCase().includes(searchString)
-    );
-  });
+  let filteredCharacters = slytherinArray
+    .concat(gryffindorArray, ravenclawArray, hufflepuffArray)
+    .filter(function (students) {
+      return students.name.toLowerCase().includes(searchString);
+    });
   showStudents(filteredCharacters);
   if (searchBar.value === "") {
     studentsList.innerHTML = "";
   }
-});	
+});
 
 let houseOfSlytherin = document.getElementById("house-of-slytherin");
 houseOfSlytherin.addEventListener("click", function () {

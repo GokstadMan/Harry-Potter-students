@@ -4,6 +4,17 @@ body {
   padding: 0;
 }
 
+.search-wrapper>input{
+  background-color: black;
+  color: yellow;
+  padding:10px;
+  text-align: center;
+  text-decoration: double;
+}
+
+p>input{
+  text-decoration:double;
+}
 
 #student-container {
   position: relative;
