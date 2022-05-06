@@ -193,7 +193,7 @@ function createStudentMember(studHouse) {
     });
   }
 
-  let answer = prompt("Ønsker du å lagre ansatt? (ja/nei)");
+  let answer = prompt("Ønsker du å lagre student? (ja/nei)");
   if (answer === "ja") {
     showStudents(studHouse);
   }
